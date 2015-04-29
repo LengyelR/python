@@ -45,7 +45,21 @@ def Blockbit(M,log):
 		return  "random a sorozat"
 	else:
 		return "fail"
+
+def tester(name):
+	print name.upper()  + '\n'
+	log = open(name+'.txt','r').readlines()
+	log = map(lambda k: int(k[0]), log)
+	freqs = Counter(log)
+
+	print freqs 
+	print Monobit(log) + '\n'
 	
+	for i in [10,100,125,200]:
+			print Blockbit(i,log) + '\n' + '-'*10
+	print "=="*40
+		
+print "RANDOM.ORG"
 url = 'https://www.random.org/integers/?num=1000&min=0&max=1&col=1&base=10&format=plain&rnd=new'
 log = urllib2.urlopen(url).readlines()
 
@@ -57,3 +71,10 @@ print Monobit(log) + '\n'
 
 for i in [10,100,125,200]:
         print Blockbit(i,log) + '\n' + '-'*10
+		
+print "=="*40
+
+tester('knuth')
+tester('msvs')
+tester('mersenne_twister')
+tester('rossz')
